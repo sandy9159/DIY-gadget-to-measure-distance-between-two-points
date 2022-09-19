@@ -86,5 +86,51 @@ The area that is swept clean by a windshield wiper
 
 
 
+![image](https://user-images.githubusercontent.com/19898602/190955748-b43d97f6-590e-4d8f-a6d5-6ba3bc953e01.png)
+
+First I have made a wooden base with 12mm wooden sheet. 
+
+I always use birch ply for my project because it looks good and easy to work with.
+
+I cut the wooden sheet using Jigsaw machine and then I rounded the edge with 
+The help of sander machine.
+
+
+![image](https://user-images.githubusercontent.com/19898602/190956062-b5129761-8d3d-4ebd-83c3-aca1336792da.png)![image](https://user-images.githubusercontent.com/19898602/190956097-9ef6deba-d2a6-49c9-be6c-2ef4eb685083.png)
+
+Ultrasonic Sensor HC-SR04 is a sensor that can measure distance. 
+
+Here I use HC-SR04 Ultrasonic sensor yes this type of sensor are not very much accurate, but it will be ok for our proof of concept video.
+
+It emits an ultrasound at 40 000 Hz (40kHz) which travels through the air and if there is an object or obstacle on its path It will bounce back to the module. Considering the travel time and the speed of the sound you can calculate the distance.
+
+The configuration pin of HC-SR04 is VCC (1), TRIG (2), ECHO (3), and GND (4). The supply voltage of VCC is +5V and you can attach TRIG and ECHO pin to any Digital I/O in your Arduino Board.
+
+![image](https://user-images.githubusercontent.com/19898602/190956336-67c239f5-e679-4fd9-a8e4-22326ad3dc12.png)
+
+
+![image](https://user-images.githubusercontent.com/19898602/190956379-b8c11dee-78c3-4221-9896-36d184c50662.png)
+![image](https://user-images.githubusercontent.com/19898602/190956406-50cb1ae3-6945-42a6-862d-60b68f248ad1.png)
+
+
+Here I have use the laser diode for pointing the projection of point in the flat surface.
+
+You have to be caution while working with laser lights do not through it directly to your eys.
+Also wear protective eye glasses while working with lasers.
+
+This mini laser diode are working on 5V DC also this tinny diode have focus adjustment knob in front
+Part of the laser body. 
+
+
+![image](https://user-images.githubusercontent.com/19898602/190956715-3b9bdc04-439e-4992-9239-f225bb1bd31a.png)
+
+In this project I have MPU6050 gyroscope sensor .
+
+The MPU-6050 is the world’s first and only 6-axis motion tracking devices designed for the low power, low cost, and high performance requirements of smartphones, tablets and wearable sensors.
+
+![image](https://user-images.githubusercontent.com/19898602/190956865-9e2f256c-b490-4e71-a8aa-19aaecceadcc.png)
+
+
+
 
 
