@@ -130,6 +130,117 @@ The MPU-6050 is the world’s first and only 6-axis motion tracking devices desi
 
 ![image](https://user-images.githubusercontent.com/19898602/190956865-9e2f256c-b490-4e71-a8aa-19aaecceadcc.png)
 
+![image](https://user-images.githubusercontent.com/19898602/190956944-1896f4d3-8c33-4afa-b521-a33d1b61bfd4.png)
+
+
+Then I place the my multipurpose PCB on the brass stud.
+
+I have use 30 mm brass nut so that I have space beneath the PCB to place my battery. 
+
+![image](https://user-images.githubusercontent.com/19898602/190957087-610dfe5d-1252-4bc7-bfe6-258d56451710.png)
+
+I have used Nextion Enhanced NX3224K028 2.8” HMI Touch Display
+
+![image](https://user-images.githubusercontent.com/19898602/190957226-7fc09c48-3d29-4c35-bef4-32353aa205e7.png)
+
+
+![image](https://user-images.githubusercontent.com/19898602/190957260-5b97f84a-c842-43de-8e06-bc687b5e7f5c.png)
+
+Now time to do some basic calculation and preparing the code for the machine after that we will uplod it to arduino 
+
+# Arduino Code
+
+```
+#include <Stepper.h>
+#include <Arduino.h>
+#include <SoftwareSerial.h>
+#include <HCSR04.h>
+SoftwareSerial mySerial(2, 3); // RX, TX
+HCSR04 hc(9, 10);
+#include "Wire.h"
+#include <MPU6050_light.h>
+int distance;
+MPU6050 mpu(Wire);
+
+float f = 0;
+int l =0;
+float r =0;
+float v = 0;
+float x = 0;
+
+
+
+void setup()
+{
+  Serial.begin(9600);
+  mySerial.begin(9600);
+  Wire.begin();
+  byte status = mpu.begin();
+  Serial.print(F("MPU6050 status: "));
+  Serial.println(status);
+  while(status!=0){ } // stop everything if could not connect to MPU6050
+  
+  Serial.println(F("Calculating offsets, do not move MPU6050"));
+  delay(1000);
+  mpu.calcOffsets(); // gyro and accelero
+  Serial.println("Done!\n");
+
+  
+}
+
+void loop()
+{
+
+distance = hc.dist();
+mpu6050 ();
+v = 90-abs(r);
+x = v*(3.14/180);
+l= distance/ tan(x);
+kal();        
+mySerial.print("t12.txt=\"");
+mySerial.print(distance,1);
+mySerial.print("\"");
+mySerial.write(0xff);
+mySerial.write(0xff);
+mySerial.write(0xff);  
+}
+
+
+
+void mpu6050 (){
+mpu.update();
+
+r =  mpu.getAngleZ() ;
+//Serial.println(abs(r));
+ 
+
+mySerial.print("t13.txt=\"");
+mySerial.print(abs(r),1);
+mySerial.print("\"");
+mySerial.write(0xff);
+mySerial.write(0xff);
+mySerial.write(0xff);
+}
+
+  
+
+void kal(){
+mySerial.print("t1.txt=\"");
+mySerial.print(l,1);
+mySerial.print("\"");
+mySerial.write(0xff);
+mySerial.write(0xff);
+mySerial.write(0xff);
+}
+
+
+```
+
+
+![MVI_0008_3_1_1](https://user-images.githubusercontent.com/19898602/190957576-cf834d86-833c-463d-b450-1398eb597198.gif)
+
+  Full video Link
+  https://www.youtube.com/watch?v=vrJyR7ZaWuI
 
 
 
